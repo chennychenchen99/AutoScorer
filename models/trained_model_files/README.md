@@ -1,6 +1,6 @@
 # Download the Model Files
 
-Go to our project Google Drive folder here: https://drive.google.com/drive/folders/1wAfL-15s6qEdVkyqX0Ia-BfGcdVORafb
+Go to our Google Drive folder here: https://drive.google.com/drive/folders/15oIKRbZzbkf8SIr2uksveQ9B0LZD-YjK?usp=sharing
 and drag the model folders from the Drive into this directory.
 
 These are the three model folders:
