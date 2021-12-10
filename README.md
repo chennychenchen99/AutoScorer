@@ -1,6 +1,17 @@
 # AutoScorer
 Automated Essay Scoring (AES) Web Application
 
+# Team Members
+Daniel Chen - Product Owner, Developer
+
+Daniel Xiong - Scrum Master (Sprint 1), Developer
+
+Alex Rah - Scrum Master (Sprint 2), Developer
+
+Dana Popovsky - Scrum Master (Sprint 3), Developer
+
+Deeksha Manjunath - Scrum Master (Sprint 4), Developer
+
 ## Usage
 1. Create virtual environment: py -m venv venv
 
