@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;1,400&amp;display=swap"
+		rel="stylesheet">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<title>AutoScorer</title>
+
+	<style>
+		.moveimage {
+			position: relative;
+			top: 20px;
+		}
+
+		.button {
+			background-color: #4CAF50;
+			/* Green */
+			border: none;
+			color: white;
+			padding: 8px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			transition-duration: 0.4s;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		.button-red {
+			background-color: #f44336;
+			color: white;
+		}
+
+		.button-red:hover {
+			background-color: lightcoral;
+			color: white;
+		}
+
+		.w3-sidebar::-webkit-scrollbar {
+			display: none;
+		}
+
+		.nav-el {
+			background: none;
+		}
+
+		.nav-el:hover {
+			background: rgba(0, 0, 0, 0.5);
+			color: lightgrey;
+		}
+
+		a {
+			color: white;
+			font-size: x-large;
+			padding: 8px 16px;
+			border-radius: 5px;
+			font-weight: bold;
+		}
+
+		a:hover {
+			color: rgb(255, 217, 217);
+			font-weight: 100;
+			background-color: lightcoral;
+			padding: 8px 16px;
+			border-radius: 5px;
+			font-weight: bold;
+		}
+
+		p {
+			margin: 0px 40px;
+			margin-bottom: 30px;
+			text-align: left;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+
+	<div id="root">
+		<div class="container-fluid" style="padding: 0;">
+
+			<div class="w3-main" style="margin-left:0px;margin-right:0px">
+
+				<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3; width:400px;"
+					id="mySidebar"><br>
+					<div class="w3-bar-block">
+						<h3 style="font-weight:500; padding-bottom: 64px;">
+						</h3>
+
+						<a data-target="#team" data-toggle="collapse">
+							About Us
+						</a>
+						<br><br>
+
+						<div class="collapse about" id="team" style="margin: 10px 0">
+							<ul class="list-group"
+								style="list-style: none; text-align: center; color:rgb(255, 203, 203)">
+
+								<li>Daniel Chen (Product Owner)</li>
+								<li>Alex Rah</li>
+								<li>Deeksha Manjunath</li>
+								<li>Dana Popovsky</li>
+								<li>Daniel Xiong</li>
+
+							</ul>
+
+							<p>
+								We wanted to create a product to help middle and high school students prepare for the
+								writing portion of standardized tests, like state writing assessment tests and the ACT.
+							</p>
+
+							<p>
+								This will be helpful to those who do not have tutors or peers that can look over
+								and grade their essays.
+							</p>
+
+							<p>
+								Our model uses training data from a Kaggle competition hosted by
+								The Hewlett Foundation.
+							</p>
+
+
+						</div>
+
+
+						<a data-target="#default" data-toggle="collapse">
+							Grading Model
+						</a>
+						<br><br>
+
+						<div class="collapse default" id="default" style="margin: 10px 0">
+							<p>
+								The model used to grade the essays is built using deep learning and contextualized word
+								embeddings from BERT.
+							</p>
+
+							<p>
+								It will provide an essay score between 1 to 6 in intervals of 0.5.
+							</p>
+						</div>
+
+						<a data-target="#performance" data-toggle="collapse">
+							Model Performance
+						</a>
+						<br><br>
+
+						<div class="collapse performance" id="performance" style="margin: 10px 0">
+							<p>
+								Our model achieved a quadratic weighted kappa score of 0.8120 on our testing data with
+								around 1,200 examples.
+							</p>
+
+							<p>
+								The quadratic weight kappa score ranges from -1 to 1. The closer the kappa score is
+								to 1, the closer the essay score provided by the model matches the score that would be
+								given by a human grader.
+							</p>
+						</div>
+
+						</ul>
+
+					</div>
+				</nav>
+
+
+				<div class="w3-main" style="margin-left:400px;margin-right:50px">
+					<div class="w3-container" style="margin-top:40px" id="showcase">
+						<img class="moveimage" src="{{url_for('static', filename='AutoScorerLogo.png')}}" alt="ASLogo"
+							width="100" height="100" style="float:right;margin:0px 0px">
+						<h1 class="w3-jumbo w3-text-red" style="margin-bottom:0px;"><b>AutoScorer</b></h1>
+						<h3 class="w3-large" style="margin-top:0px; color:#212529;"><b>Submit your essay below for
+								scoring! </b></h3>
+
+						<hr style="width:100%; border:5px solid red; background-color: red;" class="w3-round w3_red" />
+					</div>
+
+
+					<div class="w3-main" style="margin-left:14px;margin-right:0px">
+
+						<form action="/" method="post">
+							<textarea name="text" id="text" cols="100" rows="20" style="margin-left: 15px; width:90%;"
+								placeholder="Input essay here!"></textarea>
+
+							<div class="w3-bar-block" style="margin-left: 15px;">
+								<div>Word Count: <span id="wordCount"></span> </div>
+							</div>
+
+							<div style="margin-left: 15px;">
+								<input id="button" class="button button-red" type="submit" value="Submit!">
+							</div>
+						</form>
+
+						<br />
+
+						<div>
+							{% if (lang == 0) %}
+
+							<div>
+								<p id="language"></p>
+							</div>
+
+							{% endif %}
+
+							{% if (score >= 0) %}
+
+							<div
+								style="margin-left: 15px; width:90%; background: lightgrey; border-radius: 5px; padding: 15px 5px;">
+								<div id="title">Your Score:</div>
+								<div>{{score}} / 6.0</div>
+							</div>
+
+							{% endif %}
+						</div>
+
+					</div>
+				</div>
+</body>
+
+<script>
+
+	// Converts special HTML entities back to characters
+	function decodeSpecialChar(text) {
+		var entities = {
+			"&amp;": "\&",
+			"&lt;": "\<",
+			"&gt;": "\>",
+			"&#34;": "\"",
+			"&#39;": "\'"
+		}
+		return text.replace(/&amp;|&lt;|&gt;|&#34;|&#39;/g, function (m) { return entities[m]; });
+	}
+
+	// Determines word count of text submitted
+	function wordCount() {
+		var words = document.getElementById('text').value;
+		return words.replaceAll('\n', '').length ? words.trim().replace(/\s+/g, ' ').split(/\s+/).length : 0;
+	}
+
+	// Formats essay for displaying
+	essay = {{ essay | tojson }}
+	var text = essay.join("");
+
+	// Keeps essay in textbox after submission
+	document.getElementById('text').value = decodeSpecialChar(text);
+
+	// Determines word count at start
+	document.getElementById('wordCount').textContent = wordCount();
+
+	// Updates word count when text is changed
+	document.getElementById('text').addEventListener('input', function () {
+		document.getElementById('wordCount').textContent = wordCount();
+	});
+
+	// Checks minimum word count
+	document.getElementById('button').addEventListener("click", function () {
+		if (wordCount() < 10)
+			alert("Please submit at least 10 words");
+		return " ";
+	});
+
+	// Displays a popup if the language of the essay is detected to be 
+	function languagePopup() {
+		var a = '{{lang}}';
+		if (a == 0)
+			alert("Please submit a valid essay in English");
+		return " ";
+	}
+
+	// Allows the languagePopup() function to be called by the name "language"
+	document.getElementById("language").innerHTML = languagePopup();
+
+
+</script>
+
+</html>
